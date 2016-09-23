@@ -1,0 +1,19 @@
+<%= render "shared/content_title", title: "New Post" %>
+
+<%= render "posts/post_form", post: @post %>
+
+
+<h5>Pure HTML form</h5>
+<form action="/posts" method="POST">
+  Title: <input type="text" name="my_title">
+  <br>
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<h5>Form Helper</h5>
+<%= form_tag '/posts' do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+  <br>
+  <%= submit_tag "Create Post", class: 'btn btn-primary' %>
+<% end %>
