@@ -5,7 +5,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    @comments = @post.comments
+    @comment = Comment.new
+  end
 
   def new 
     @post = Post.new
@@ -26,7 +29,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-  
+
     if @post.update(post_params)
       flash[:notice] = "this post was updated."
       redirect_to post_path(@path)
