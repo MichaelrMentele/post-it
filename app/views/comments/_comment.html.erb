@@ -1,8 +1,22 @@
-<div class="well span8">
-  <em>"<%= comment.body %>"</em>
-  <% if show_post %>
-  on <%= link_to comment.post.title, post_path(comment.post) %>
-  <% end %>
-  <br>
-  by <%= link_to comment.creator.username, '' %> at <%= display_datetime(comment.created_at) %>
+<div class="row">
+  <div class="span0 well text-center">
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: true) do %>
+      <i class='icon-arrow-up'></i>
+    <% end %>
+    <br>
+    <%= comment.diff_votes%>
+    <br>
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: false) do %>
+      <i class='icon-arrow-down'></i>
+    <% end %>
+  </div>
+
+  <div class="well span8">
+    <em>"<%= comment.body %>"</em>
+    <% if show_post %>
+    on <%= link_to comment.post.title, post_path(comment.post) %>
+    <% end %>
+    <br>
+    by <%= link_to comment.creator.username, '' %> at <%= display_datetime(comment.created_at) %>
+  </div>
 </div>
