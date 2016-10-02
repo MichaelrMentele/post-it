@@ -1,12 +1,12 @@
 <div class="row">
   <div class="span0 well text-center">
-    <%= link_to vote_post_comment_path(comment.post, comment, vote: true) do %>
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post', remote: true do %>
       <i class='icon-arrow-up'></i>
     <% end %>
     <br>
-    <%= comment.diff_votes%>
+    <span id="comment_<%= comment.id %>_votes"><%= comment.diff_votes%> votes</span>
     <br>
-    <%= link_to vote_post_comment_path(comment.post, comment, vote: false) do %>
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true do %>
       <i class='icon-arrow-down'></i>
     <% end %>
   </div>

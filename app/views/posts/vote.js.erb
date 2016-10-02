@@ -1,0 +1,5 @@
+<% if @vote.valid? %>
+  $('#post_<%= @post.id %>_votes').html("<%= @post.diff_votes %> votes")
+<% else %>
+  alert("you can only vote on a post once")
+<% end %>
