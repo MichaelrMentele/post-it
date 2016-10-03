@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   sluggable_column :username
 
   def admin?
-    self.role == 'admin'
+    self.roles == 'admin'
   end
 
   def moderator?
-    self.role == 'moderator'
+    self.roles == 'moderator'
   end
 end

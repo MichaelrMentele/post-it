@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index]
-
+  before_action :require_permissions, only: [:edit, :update]
   def index
     @posts = Post.all.sort_by{|x| x.diff_votes}.reverse
   end
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;  end
 
   def update
     if @post.update(post_params)
@@ -62,5 +62,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit!
+  end
+
+  def require_permissions
+    user = current_user
+    post = Post.find_by slug: params[:id]
+
+    access_denied unless logged_in? and (current_user == post.creator || user.admin?)
   end
 end
