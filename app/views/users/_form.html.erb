@@ -9,6 +9,13 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
+     <div class="control-group">
+      <%= f.label :phone, "Phone Number <small>(numbers only)</small>".html_safe %>
+      <%= f.text_field :phone, maxlength: 9%>
+      <%= link_to '#', id: 'two_factor_phone' do %>
+        <i class='glyphicon glyphicon-question-sign'></i>
+      <% end %> 
+    </div>
     <div class="control-group">
       <%= f.label :time_zone %>
       <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %>
