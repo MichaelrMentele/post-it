@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   sluggable_column :username
 
   def send_pin_to_twilio
-    account_sid = 'AC0016f4c55afaf79b77ec86e2bf32ec19'
-    auth_token = '36077868d84cb02d517eb5d02199c08b'
+    account_sid = ''
+    auth_token = ''
 
     # set up a client to talk to the Twilio REST API
     client = Twilio::REST::Client.new account_sid, auth_token
